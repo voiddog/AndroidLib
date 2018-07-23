@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="void_status_bar_util_fake_status_bar_view" type="id"/>
+    <item name="void_status_bar_util_translucent_view" type="id"/>
+    <item name="void_view_tag_physics_spring_anim" type="id"/>
+</resources>
