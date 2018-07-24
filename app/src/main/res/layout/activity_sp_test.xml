@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sample.SpTestActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tool_bar"
+        style="@style/AppToolbarStyle"
+        app:title="测试 Sp"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"/>
+
+    <Button
+        android:id="@+id/btn_write_sp"
+        android:text="写入数据"
+        app:layout_constraintTop_toBottomOf="@id/tool_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_read_sp"
+        android:text="读写数据"
+        app:layout_constraintTop_toTopOf="@id/btn_write_sp"
+        app:layout_constraintLeft_toRightOf="@id/btn_write_sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/txt_sp"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_write_sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+</android.support.constraint.ConstraintLayout>

@@ -17,7 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".sample.PhysicAnimTestActivity"></activity>
+        <activity android:name=".sample.PhysicAnimTestActivity" />
+        <activity android:name=".sample.SpTestActivity"></activity>
     </application>
 
 </manifest>

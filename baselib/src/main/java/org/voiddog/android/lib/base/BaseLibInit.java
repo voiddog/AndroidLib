@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import org.voiddog.android.lib.base.config.SPManager;
+import org.voiddog.android.lib.base.config.SpConfig;
 import org.voiddog.android.lib.base.rs.RenderScriptManager;
 import org.voiddog.android.lib.base.utils.ContextUtil;
 

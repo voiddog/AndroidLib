@@ -1,6 +1,7 @@
 package org.voiddog.android.lib.base.config;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 import java.util.List;
@@ -35,7 +36,8 @@ public class SpConfig {
          * @param <T>
          * @return
          */
-        <T> List<T> parseList(String value, Class<T> clazz);
+        @Nullable
+        <T> List<T> parseList(@Nullable String value, @NonNull Class<T> clazz);
 
         /**
          * 解析 T
@@ -44,13 +46,15 @@ public class SpConfig {
          * @param <T>
          * @return
          */
-        <T> T parseObject(String value, Class<T> clazz);
+        @Nullable
+        <T> T parseObject(@Nullable String value, @NonNull Class<T> clazz);
 
         /**
          * 转成 json string
          * @param value
          * @return
          */
+        @Nullable
         String toJSONString(Object value);
     }
     public static class Builder {
@@ -74,6 +78,10 @@ public class SpConfig {
             this.jsonParseSupplier = jsonParseSupplier;
             return this;
         }
+
+        public SpConfig build() {
+            return new SpConfig(this);
+        }
     }
 
     @NonNull
@@ -81,7 +89,7 @@ public class SpConfig {
     @NonNull
     private final JSONParseSupplier jsonParseSupplier;
 
-    public SpConfig(Builder builder) {
+    private SpConfig(Builder builder) {
         if (TextUtils.isEmpty(builder.defaultSpName)) {
             throw new IllegalArgumentException("default sp name should not be empty");
         }
