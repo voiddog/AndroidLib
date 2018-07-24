@@ -1,0 +1,6 @@
+<resources>
+    <string name="void_design_default_load_more_complete">- 加载完毕 -</string>
+    <string name="void_design_default_load_more_error">- 加载异常 -</string>
+    <string name="void_design_default_load_more_loading">加载中</string>
+    <string name="void_design_pull_to_refresh">下拉刷新</string>
+</resources>

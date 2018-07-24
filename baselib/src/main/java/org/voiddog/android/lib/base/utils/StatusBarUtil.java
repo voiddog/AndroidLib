@@ -43,8 +43,8 @@ public class StatusBarUtil {
     private static final int DEFAULT_STATUS_BAR_COLOR = 0x00ffffff;
     private static final int DEFAULT_TRANSLUCENT_LIGHT_STATUS_BAR_COLOR = 0x30000000;
     private static final int DEFAULT_LIGHT_STATUS_BAR_COLOR = 0xff84838F;
-    private static final int FAKE_STATUS_BAR_VIEW_ID = R.id.void_status_bar_util_fake_status_bar_view;
-    private static final int FAKE_TRANSLUCENT_VIEW_ID = R.id.void_status_bar_util_translucent_view;
+    private static final int FAKE_STATUS_BAR_VIEW_ID = R.id.void_base_status_bar_util_fake_status_bar_view;
+    private static final int FAKE_TRANSLUCENT_VIEW_ID = R.id.void_base_status_bar_util_translucent_view;
 
     /**
      * 设置状态栏颜色

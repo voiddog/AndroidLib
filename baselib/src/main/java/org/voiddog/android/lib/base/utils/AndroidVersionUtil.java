@@ -72,6 +72,6 @@ public class AndroidVersionUtil {
      * @return
      */
     public static boolean isAfterP() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.P;
+        return Build.VERSION.SDK_INT >= 28;
     }
 }

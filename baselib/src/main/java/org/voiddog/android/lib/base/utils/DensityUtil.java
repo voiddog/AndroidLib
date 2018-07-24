@@ -28,16 +28,17 @@ import android.util.DisplayMetrics;
 public class DensityUtil {
 
     private static DisplayMetrics mDisplayMetrics;
-    private static int mDensityDpi;
+    private static float mDensity;
     private static int mScreenWidth;
     private static int mScreenHeight;
+
 
     private static void initDisplayMetrics(@NonNull Context context) {
         if (mDisplayMetrics == null) {
             mDisplayMetrics = context.getResources().getDisplayMetrics();
-            mDensityDpi = mDisplayMetrics.densityDpi;
             mScreenWidth = mDisplayMetrics.widthPixels;
             mScreenHeight = mDisplayMetrics.heightPixels;
+            mDensity = mDisplayMetrics.density;
         }
     }
 
@@ -69,7 +70,7 @@ public class DensityUtil {
             return 0;
         }
         initDisplayMetrics(context);
-        int ret = (int) (dpValue * mDensityDpi + 0.5f);
+        int ret = (int) (dpValue * mDensity + 0.5f);
         return ret == 0 ? 1 : ret;
     }
 
@@ -78,7 +79,7 @@ public class DensityUtil {
      */
     public static float dp2floatPx(@NonNull Context context, float dpValue) {
         initDisplayMetrics(context);
-        return dpValue * mDensityDpi + 0.5f;
+        return dpValue * mDensity + 0.5f;
     }
 
     /**
@@ -86,7 +87,7 @@ public class DensityUtil {
      */
     public static int px2dp(@NonNull Context context, float pxValue) {
         initDisplayMetrics(context);
-        return (int) (pxValue / mDensityDpi + 0.5f);
+        return (int) (pxValue / mDensity + 0.5f);
     }
 
     /**
@@ -94,7 +95,7 @@ public class DensityUtil {
      */
     public static int sp2px(@NonNull Context context, float dpValue) {
         initDisplayMetrics(context);
-        return (int) (dpValue * mDensityDpi + 0.5f);
+        return (int) (dpValue * mDensity + 0.5f);
     }
 
     /**
@@ -102,7 +103,7 @@ public class DensityUtil {
      */
     public static int px2sp(@NonNull Context context, float pxValue) {
         initDisplayMetrics(context);
-        return (int) (pxValue / mDensityDpi + 0.5f);
+        return (int) (pxValue / mDensity + 0.5f);
     }
 
     public static int dp2px(float dp){
