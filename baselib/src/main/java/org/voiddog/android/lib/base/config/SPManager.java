@@ -4,8 +4,10 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.TextView;
 
 import org.voiddog.android.lib.base.utils.ParseUtil;
 import org.voiddog.android.lib.base.utils.TypeUtil;
@@ -59,6 +61,28 @@ public enum SPManager {
         isInit = true;
         sp = appContext.getSharedPreferences(spConfig.getDefaultSpName(), Context.MODE_PRIVATE);
         this.appContext = appContext;
+        this.spConfig = spConfig;
+    }
+
+    /**
+     * 清理 sp 数据
+     */
+    public void clean() {
+        clean(null);
+    }
+
+    /**
+     * 清理指定 spName 的 shared preference
+     * @param spName 需要清理的 shared preference 的名字
+     */
+    public void clean(@Nullable String spName) {
+        SharedPreferences sp;
+        if (TextUtils.isEmpty(spName)) {
+            sp = this.sp;
+        } else {
+            sp = appContext.getSharedPreferences(spName, Context.MODE_PRIVATE);
+        }
+        sp.edit().clear().apply();
     }
 
     public <T extends ISPService> T getService(Class<T> clazz){
@@ -72,7 +96,7 @@ public enum SPManager {
         return (T) o;
     }
 
-    private <T extends ISPService> T createNewService(Class<T> clazz){
+    private <T extends ISPService> T createNewService(final Class<T> clazz){
         checkInit();
         Object res = Proxy.newProxyInstance(clazz.getClassLoader(), new Class[]{clazz}, new InvocationHandler() {
             @Override
@@ -97,8 +121,7 @@ public enum SPManager {
 
                 do {
                     // get data
-                    Object configRet = null, spRet = null;
-                    if (returnRawType != void.class) {
+                    if (returnRawType != void.class && !clazz.equals(returnRawType)) {
                         Object defaultValue = null;
                         if (args != null && args.length > 0){
                             defaultValue = args[0];
@@ -109,26 +132,26 @@ public enum SPManager {
                                     appContext.getSharedPreferences(spName, Context.MODE_PRIVATE);
 
                             if (returnRawType == String.class) {
-                                spRet = sp.getString(spKey, null);
+                                ret = sp.getString(spKey, null);
                             } else if (returnRawType == Integer.class || returnRawType == int.class) {
-                                spRet = sp.getInt(spKey, (defaultValue instanceof Integer) ? (Integer)defaultValue : 0);
+                                ret = sp.getInt(spKey, (defaultValue instanceof Integer) ? (Integer)defaultValue : 0);
                             } else if (returnRawType == Long.class || returnRawType == long.class) {
-                                spRet = sp.getLong(spKey, (defaultValue instanceof Long) ? (Long)defaultValue : 0);
+                                ret = sp.getLong(spKey, (defaultValue instanceof Long) ? (Long)defaultValue : 0);
                             } else if (returnRawType == Float.class || returnRawType == float.class
                                     || returnRawType == Double.class ||returnRawType == double.class) {
                                 // Double a = 1; Float b = (Float) a;
-                                spRet = sp.getFloat(spKey, (defaultValue instanceof Float || defaultValue instanceof Double) ? (Float)defaultValue : 0);
+                                ret = sp.getFloat(spKey, (defaultValue instanceof Float || defaultValue instanceof Double) ? (Float)defaultValue : 0);
                             } else if (returnRawType == Boolean.class || returnRawType == boolean.class) {
-                                spRet = sp.getBoolean(spKey, (defaultValue instanceof Boolean) ? (Boolean)defaultValue : false);
+                                ret = sp.getBoolean(spKey, (defaultValue instanceof Boolean) ? (Boolean)defaultValue : false);
                             } else {
                                 String value = sp.getString(spKey, null);
                                 if (!TextUtils.isEmpty(value)) {
-                                    spRet = createNewInstance(returnType, returnRawType, value);
+                                    ret = createNewInstance(returnType, returnRawType, value);
                                 }
                             }
                         }
-                        if (spRet == null && defaultValue != null){
-                            spRet = defaultValue;
+                        if (ret == null && defaultValue != null){
+                            ret = defaultValue;
                         }
                     } else if (!TextUtils.isEmpty(spKey)){
                         // 写入数据
@@ -157,8 +180,10 @@ public enum SPManager {
                             }
                             editor.apply();
                         }
+                        if (clazz.equals(returnRawType)) {
+                            ret = o;
+                        }
                     }
-                    ret = spRet;
                 } while (false);
 
                 if (!api.nullable() && returnRawType != void.class && ret == null){
@@ -202,11 +227,6 @@ public enum SPManager {
             return null;
         }
         try {
-            if (clazz.isAssignableFrom(List.class)){
-                Type listType = TypeUtil.getParameterUpperBound(0, (ParameterizedType) type);
-                Class<?> listParamType = TypeUtil.getRawType(listType);
-                return (T) spConfig.getJsonParseSupplier().parseList(value, listParamType);
-            }
             return spConfig.getJsonParseSupplier().parseObject(value, clazz);
         } catch (Exception e){
             e.printStackTrace();

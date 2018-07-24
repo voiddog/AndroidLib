@@ -29,15 +29,6 @@ import java.util.List;
  */
 public class SpConfig {
     public interface JSONParseSupplier {
-        /**
-         * 解析 T 成一个 List<T>
-         * @param value
-         * @param clazz
-         * @param <T>
-         * @return
-         */
-        @Nullable
-        <T> List<T> parseList(@Nullable String value, @NonNull Class<T> clazz);
 
         /**
          * 解析 T

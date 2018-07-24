@@ -22,9 +22,18 @@
 
     <Button
         android:id="@+id/btn_read_sp"
-        android:text="读写数据"
+        android:text="读取数据"
         app:layout_constraintTop_toTopOf="@id/btn_write_sp"
         app:layout_constraintLeft_toRightOf="@id/btn_write_sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_clean"
+        android:text="清理数据"
+        app:layout_constraintTop_toTopOf="@id/btn_write_sp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_write_sp"
+        app:layout_constraintLeft_toRightOf="@id/btn_read_sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

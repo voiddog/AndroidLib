@@ -1,5 +1,6 @@
 package org.voiddog.android.test.lib.sample
 
+import android.annotation.SuppressLint
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_sp_test.*
@@ -13,16 +14,34 @@ private data class UserData(val name: String, val phone: String, val age: Int)
 private interface Api : ISPService {
 
     @SPApi(spKey = "id")
-    fun writeId(id: Int)
+    fun writeId(id: Int): Api
 
     @SPApi(spKey = "price")
-    fun writeFloat(price: Float)
+    fun writeFloat(price: Float): Api
 
     @SPApi(spKey = "name")
-    fun writeString(name: String)
+    fun writeName(name: String): Api
 
     @SPApi(spKey = "user")
-    fun writeData(user: UserData)
+    fun writeData(user: UserData): Api
+
+    @SPApi(spKey = "userList")
+    fun writeList(userList: List<UserData>): Api
+
+    @SPApi(spKey = "id")
+    fun getId(default: Int): Int
+
+    @SPApi(spKey = "price")
+    fun getFloat(default: Float): Float
+
+    @SPApi(spKey = "name")
+    fun getString(default: String?): String
+
+    @SPApi(spKey = "user")
+    fun getData(): UserData
+
+    @SPApi(spKey = "userList")
+    fun getDataList(): List<UserData>
 }
 
 /**
@@ -30,12 +49,32 @@ private interface Api : ISPService {
  */
 class SpTestActivity : AppCompatActivity() {
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sp_test)
         btn_write_sp.setOnClickListener {
             SPManager.INSTANCE.getService(Api::class.java)
                     .writeFloat(100f)
+                    .writeId(11037)
+                    .writeName("voiddog")
+                    .writeData(UserData("voiddog", "192.168.1.1", 25))
+                    .writeList(arrayListOf(UserData("傅林南", "3838438", 26),
+                            UserData("戚神", "1234567", 100000),
+                            UserData("李锐", "6666666", 26)))
+        }
+        btn_read_sp.setOnClickListener {
+            val api = SPManager.INSTANCE.getService(Api::class.java)
+            txt_sp.text = """
+                ${api.getId(-1)}
+                ${api.getFloat(-1f)}
+                ${api.getString(null)}
+                ${api.getData()}
+                ${api.getDataList()}
+            """.trimIndent()
+        }
+        btn_clean.setOnClickListener {
+            SPManager.INSTANCE.clean()
         }
     }
 }
