@@ -14,7 +14,7 @@
         android:layout_height="@dimen/void_design_img_default_load_more_size" />
 
     <TextView
-        android:id="@+id/txt_content"
+        android:id="@+id/txt_load_more"
         android:gravity="center"
         android:text="@string/void_design_default_load_more_loading"
         android:textColor="@color/void_design_txt_default_load_more"
