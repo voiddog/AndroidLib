@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="void_design_refresh_height">56dp</dimen>
+    <dimen name="void_design_txt_default_refresh">12sp</dimen>
+    <dimen name="void_design_img_default_refresh_size">16dp</dimen>
+    <dimen name="void_design_margin_default_refresh">5dp</dimen>
     <dimen name="void_design_default_load_more_height">56dp</dimen>
+    <dimen name="void_design_txt_default_load_more">12sp</dimen>
+    <dimen name="void_design_img_default_load_more_size">16dp</dimen>
+    <dimen name="void_design_margin_default_load_more">5dp</dimen>
 </resources>
