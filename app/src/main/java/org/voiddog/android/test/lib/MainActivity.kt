@@ -12,6 +12,8 @@ import org.voiddog.android.lib.base.recycler.adapter.ListMultiTypeBindAdapter
 import org.voiddog.android.lib.base.recycler.adapter.MultiTypeBindAdapter
 import org.voiddog.android.lib.base.recycler.viewholder.BindViewHolder
 import org.voiddog.android.lib.base.utils.DensityUtil.dp2px
+import org.voiddog.android.test.lib.sample.LoadingArchTestActivity
+import org.voiddog.android.test.lib.sample.PermissionTestActivity
 import org.voiddog.android.test.lib.sample.PhysicAnimTestActivity
 import org.voiddog.android.test.lib.sample.SpTestActivity
 
@@ -57,7 +59,9 @@ class MainActivity : AppCompatActivity() {
             MenuVH(it)
         }
         val menuList = arrayListOf(MenuEntry("测试物理动画效果", PhysicAnimTestActivity::class.java),
-                MenuEntry("测试 SPManager", SpTestActivity::class.java))
+                MenuEntry("测试 SPManager", SpTestActivity::class.java),
+                MenuEntry("测试 loading arch", LoadingArchTestActivity::class.java),
+                MenuEntry("测试权限", PermissionTestActivity::class.java))
         rec_list.adapter = adapter
         rec_list.layoutManager = LinearLayoutManager(this)
         adapter.set(menuList)
