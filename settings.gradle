@@ -1,1 +1,1 @@
-include ':app', ':baselib', ':designlib', ':rxlib'
+include ':app', ':baselib', ':designlib', ':rxlib', ':glidevsfresco'

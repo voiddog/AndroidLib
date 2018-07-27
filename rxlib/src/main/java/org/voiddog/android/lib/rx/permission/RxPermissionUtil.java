@@ -1,22 +1,17 @@
 package org.voiddog.android.lib.rx.permission;
 
-import android.Manifest;
 import android.app.Activity;
 import android.arch.lifecycle.Lifecycle;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.os.Build;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-
-import org.voiddog.android.lib.rx.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,7 +92,7 @@ public class RxPermissionUtil {
 
     //===============================共有方法==================================
 
-    public static Observable<RxPermissionResult> checkPermission(@NonNull final AppCompatActivity activity
+    public static Observable<RxPermissionResult> checkPermission(@NonNull final FragmentActivity activity
             , @NonNull final IRxPermissionHandler sender, @NonNull RxPermissionRequest request) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             Observable<RxPermissionRequest> observable = Observable.just(request);
