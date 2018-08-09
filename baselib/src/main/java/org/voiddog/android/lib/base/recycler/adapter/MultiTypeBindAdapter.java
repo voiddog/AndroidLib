@@ -30,8 +30,11 @@ import org.voiddog.android.lib.base.recycler.viewholder.BindViewHolder;
  * @author qigengxin
  * @since 2018-07-24 11:35
  */
-public abstract class MultiTypeBindAdapter <T extends MultiTypeBindAdapter.ViewTypeItem>
+public abstract class MultiTypeBindAdapter <T>
         extends RecyclerView.Adapter<BindViewHolder<? super T>> {
+
+    private static final int DEFAULT_ITEM_TYPE = 0;
+
     /**
      * 有具体类型的 item
      */
@@ -43,7 +46,7 @@ public abstract class MultiTypeBindAdapter <T extends MultiTypeBindAdapter.ViewT
         int getViewType();
     }
 
-    public interface ItemProvider<V extends ViewTypeItem>{
+    public interface ItemProvider<V>{
         /**
          * 创建 ViewHolder
          * @param parent
@@ -57,6 +60,14 @@ public abstract class MultiTypeBindAdapter <T extends MultiTypeBindAdapter.ViewT
      * 记录 itemType 到 ViewHolder Provider 的稀疏数组
      */
     private SparseArray<ItemProvider<T>> itemProviderSparseArray = new SparseArray<>();
+
+    /**
+     * 注册 item 默认提供器 {@link #DEFAULT_ITEM_TYPE}
+     * @param itemProvider
+     */
+    public void registerItemProvider(@NonNull ItemProvider<T> itemProvider) {
+        registerItemProvider(DEFAULT_ITEM_TYPE, itemProvider);
+    }
 
     /**
      * 注册 item 提供器
@@ -87,7 +98,11 @@ public abstract class MultiTypeBindAdapter <T extends MultiTypeBindAdapter.ViewT
 
     @Override
     public int getItemViewType(int position) {
-        return getItemAtIndex(position).getViewType();
+        T ret = getItemAtIndex(position);
+        if (ret instanceof ViewTypeItem) {
+            return ((ViewTypeItem) ret).getViewType();
+        }
+        return DEFAULT_ITEM_TYPE;
     }
 
     @Override
