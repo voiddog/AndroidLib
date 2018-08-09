@@ -29,7 +29,7 @@ import java.util.List;
  * @author qigengxin
  * @since 2018-07-24 11:40
  */
-public class ListMultiTypeBindAdapter<T extends MultiTypeBindAdapter.ViewTypeItem> extends MultiTypeBindAdapter<T> {
+public class ListMultiTypeBindAdapter<T> extends MultiTypeBindAdapter<T> {
 
     @Nullable
     private List<T> dataList;
