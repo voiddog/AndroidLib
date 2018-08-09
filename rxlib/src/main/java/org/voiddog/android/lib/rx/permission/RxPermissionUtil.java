@@ -112,7 +112,7 @@ public class RxPermissionUtil {
                         result.setSuccess(true);
                         result.getGrantedPermissionList().addAll(allPermission);
                         emitter.emitPermission(result);
-                    } else if (!activity.getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.CREATED)) {
+                    } else if (!activity.getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.INITIALIZED)) {
                         // 如果不是 created 状态，直接给予结果
                         RxPermissionResult result = new RxPermissionResult();
                         result.setSuccess(true);
