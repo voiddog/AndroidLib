@@ -52,20 +52,20 @@ public abstract class MultiTypeBindAdapter <T>
          * @param parent
          * @return
          */
-        BindViewHolder<? super V> onCreateViewHolder(@NonNull ViewGroup parent);
+        BindViewHolder onCreateViewHolder(@NonNull ViewGroup parent);
     }
 
 
     /**
      * 记录 itemType 到 ViewHolder Provider 的稀疏数组
      */
-    private SparseArray<ItemProvider<T>> itemProviderSparseArray = new SparseArray<>();
+    private SparseArray<ItemProvider> itemProviderSparseArray = new SparseArray<>();
 
     /**
      * 注册 item 默认提供器 {@link #DEFAULT_ITEM_TYPE}
      * @param itemProvider
      */
-    public void registerItemProvider(@NonNull ItemProvider<T> itemProvider) {
+    public void registerItemProvider(@NonNull ItemProvider<? extends T> itemProvider) {
         registerItemProvider(DEFAULT_ITEM_TYPE, itemProvider);
     }
 
@@ -74,7 +74,7 @@ public abstract class MultiTypeBindAdapter <T>
      * @param viewType
      * @param itemProvider
      */
-    public void registerItemProvider(int viewType, @NonNull ItemProvider<T> itemProvider){
+    public void registerItemProvider(int viewType, @NonNull ItemProvider<? extends T> itemProvider){
         itemProviderSparseArray.put(viewType, itemProvider);
     }
 
@@ -108,7 +108,8 @@ public abstract class MultiTypeBindAdapter <T>
     @Override
     @NonNull
     public BindViewHolder<? super T> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        BindViewHolder<? super T> res = itemProviderSparseArray.get(viewType).onCreateViewHolder(parent);
+        BindViewHolder<? super T> res = ((ItemProvider<T>)(itemProviderSparseArray.get(viewType)))
+                .onCreateViewHolder(parent);
         if(res == null){
             throw new IllegalArgumentException("the create view holder return null");
         }

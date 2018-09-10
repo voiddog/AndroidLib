@@ -27,7 +27,8 @@
         <activity android:name=".sample.PhysicAnimTestActivity" />
         <activity android:name=".sample.SpTestActivity" />
         <activity android:name=".sample.LoadingArchTestActivity" />
-        <activity android:name=".sample.PermissionTestActivity"></activity>
+        <activity android:name=".sample.PermissionTestActivity" />
+        <activity android:name=".sample.MultiTypeTestActivity"></activity>
     </application>
 
 </manifest>

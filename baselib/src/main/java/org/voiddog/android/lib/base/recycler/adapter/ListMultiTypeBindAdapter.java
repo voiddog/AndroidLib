@@ -48,11 +48,11 @@ public class ListMultiTypeBindAdapter<T> extends MultiTypeBindAdapter<T> {
         notifyItemInserted(oldPosition);
     }
 
-    public void add(List<T> dataList) {
+    public void add(List<? extends T> dataList) {
         add(getDataList().size(), dataList);
     }
 
-    public void add(int index, List<T> dataList) {
+    public void add(int index, List<? extends T> dataList) {
         if (dataList == null) {
             return;
         }
@@ -60,7 +60,7 @@ public class ListMultiTypeBindAdapter<T> extends MultiTypeBindAdapter<T> {
         notifyItemRangeInserted(index, dataList.size());
     }
 
-    public void set(List<T> dataList) {
+    public void set(List<? extends T> dataList) {
         getDataList().clear();
         if (dataList != null) {
             getDataList().addAll(dataList);
