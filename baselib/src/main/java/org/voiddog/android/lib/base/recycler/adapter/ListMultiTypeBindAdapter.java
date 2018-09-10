@@ -56,7 +56,7 @@ public class ListMultiTypeBindAdapter<T> extends MultiTypeBindAdapter<T> {
         if (dataList == null) {
             return;
         }
-        getDataList().addAll(dataList);
+        getDataList().addAll(index, dataList);
         notifyItemRangeInserted(index, dataList.size());
     }
 
