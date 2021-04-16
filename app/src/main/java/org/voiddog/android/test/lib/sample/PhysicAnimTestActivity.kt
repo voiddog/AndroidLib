@@ -2,10 +2,9 @@ package org.voiddog.android.test.lib.sample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_physic_anim_test.*
 import org.voiddog.android.lib.base.utils.DensityUtil.dp2px
 import org.voiddog.android.lib.design.animator.PhysicsSpringAnimSet
-import org.voiddog.android.test.lib.R
+import org.voiddog.android.test.lib.databinding.ActivityPhysicAnimTestBinding
 
 class PhysicAnimTestActivity : AppCompatActivity() {
 
@@ -15,31 +14,34 @@ class PhysicAnimTestActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_physic_anim_test)
         val moveDis = dp2px(100f)
-        btn_move_right.setOnClickListener {
+        val binding = ActivityPhysicAnimTestBinding.inflate(layoutInflater)
+
+        binding.btnMoveRight.setOnClickListener {
             x += moveDis
-            PhysicsSpringAnimSet.from(img_sample)
+            PhysicsSpringAnimSet.from(binding.imgSample)
                     .translationX(x)
         }
-        btn_move_left_top.setOnClickListener {
+        binding.btnMoveLeftTop.setOnClickListener {
             x -= moveDis
             y -= moveDis
-            PhysicsSpringAnimSet.from(img_sample)
+            PhysicsSpringAnimSet.from(binding.imgSample)
                     .translationX(x)
                     .translationY(y)
         }
-        btn_move_down_zoom_in.setOnClickListener {
+        binding.btnMoveDownZoomIn.setOnClickListener {
             y += moveDis
             scale += 0.1f
-            PhysicsSpringAnimSet.from(img_sample)
+            PhysicsSpringAnimSet.from(binding.imgSample)
                     .translationY(y)
                     .scale(scale)
         }
-        btn_zoom_out.setOnClickListener {
+        binding.btnZoomOut.setOnClickListener {
             scale -= 0.5f
-            PhysicsSpringAnimSet.from(img_sample)
+            PhysicsSpringAnimSet.from(binding.imgSample)
                     .scale(scale)
         }
+
+        setContentView(binding.root)
     }
 }

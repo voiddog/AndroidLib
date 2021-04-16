@@ -7,11 +7,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.Button
-import kotlinx.android.synthetic.main.activity_main.*
 import org.voiddog.android.lib.base.recycler.adapter.ListMultiTypeBindAdapter
 import org.voiddog.android.lib.base.recycler.adapter.MultiTypeBindAdapter
 import org.voiddog.android.lib.base.recycler.viewholder.BindViewHolder
 import org.voiddog.android.lib.base.utils.DensityUtil.dp2px
+import org.voiddog.android.test.lib.databinding.ActivityMainBinding
 import org.voiddog.android.test.lib.sample.*
 
 private data class MenuEntry(val name:String, val clazz: Class<*>)
@@ -49,18 +49,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         val adapter = ListMultiTypeBindAdapter<MenuEntry>()
         adapter.registerItemProvider(0) {
             MenuVH(it)
         }
         val menuList = arrayListOf(MenuEntry("测试物理动画效果", PhysicAnimTestActivity::class.java),
                 MenuEntry("测试 SPManager", SpTestActivity::class.java),
-                MenuEntry("测试 loading arch", LoadingArchTestActivity::class.java),
                 MenuEntry("测试 List Multi item", MultiTypeTestActivity::class.java),
                 MenuEntry("测试权限", PermissionTestActivity::class.java))
-        rec_list.adapter = adapter
-        rec_list.layoutManager = LinearLayoutManager(this)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        val recList = binding.recList
+        recList.adapter = adapter
+        recList.layoutManager = LinearLayoutManager(this)
         adapter.set(menuList)
+
+        setContentView(binding.root)
     }
 }
