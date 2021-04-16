@@ -1,6 +1,6 @@
 package org.voiddog.android.lib.design.loadingarch.paging;
 
-import android.arch.lifecycle.MutableLiveData;
+import androidx.lifecycle.MutableLiveData;
 
 /**
  * ┏┛ ┻━━━━━┛ ┻┓

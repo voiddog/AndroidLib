@@ -1,7 +1,7 @@
 package org.voiddog.android.lib.base.utils;
 
 import android.graphics.Color;
-import android.support.annotation.FloatRange;
+import androidx.annotation.FloatRange;
 import android.text.TextUtils;
 
 /**

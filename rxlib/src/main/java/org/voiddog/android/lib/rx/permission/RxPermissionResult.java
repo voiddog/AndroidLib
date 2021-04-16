@@ -1,7 +1,6 @@
 package org.voiddog.android.lib.rx.permission;
 
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;

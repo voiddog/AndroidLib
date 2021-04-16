@@ -1,6 +1,6 @@
 package org.voiddog.android.lib.design.loadingarch.loadmore;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +10,6 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import junit.framework.Test;
 
 import org.voiddog.android.lib.design.R;
 

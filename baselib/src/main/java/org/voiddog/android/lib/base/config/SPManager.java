@@ -3,18 +3,16 @@ package org.voiddog.android.lib.base.config;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.TextView;
 
 import org.voiddog.android.lib.base.utils.ParseUtil;
 import org.voiddog.android.lib.base.utils.TypeUtil;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Proxy;
 import java.lang.reflect.Type;
 import java.util.ArrayList;

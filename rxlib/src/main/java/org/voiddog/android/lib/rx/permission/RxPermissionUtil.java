@@ -1,16 +1,16 @@
 package org.voiddog.android.lib.rx.permission;
 
 import android.app.Activity;
-import android.arch.lifecycle.Lifecycle;
+import androidx.lifecycle.Lifecycle;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
+import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
 
 import java.util.ArrayList;

@@ -1,9 +1,9 @@
 package org.voiddog.android.lib.design.animator;
 
-import android.support.animation.DynamicAnimation;
-import android.support.animation.SpringAnimation;
-import android.support.animation.SpringForce;
-import android.support.annotation.NonNull;
+import androidx.dynamicanimation.animation.DynamicAnimation;
+import androidx.dynamicanimation.animation.SpringAnimation;
+import androidx.dynamicanimation.animation.SpringForce;
+import androidx.annotation.NonNull;
 import android.view.View;
 
 import org.voiddog.android.lib.design.R;

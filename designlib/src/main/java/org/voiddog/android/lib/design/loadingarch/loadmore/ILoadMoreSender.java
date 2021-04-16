@@ -1,6 +1,6 @@
 package org.voiddog.android.lib.design.loadingarch.loadmore;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * ┏┛ ┻━━━━━┛ ┻┓

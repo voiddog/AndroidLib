@@ -1,7 +1,7 @@
 package org.voiddog.android.lib.rx.permission;
 
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import io.reactivex.Observable;
 

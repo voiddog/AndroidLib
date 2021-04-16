@@ -2,7 +2,7 @@ package org.voiddog.android.lib.base.widget;
 
 import android.graphics.Outline;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.RequiresApi;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 

@@ -1,0 +1,29 @@
+apply plugin: 'maven-publish'
+
+// Because the components are created only during the afterEvaluate phase, you must
+// configure your publications using the afterEvaluate() lifecycle method.
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
+
+                // You can then customize attributes of the publication as shown below.
+                groupId = GROUP_ID
+                artifactId = project.name
+                version = VERSION
+            }
+            // Creates a Maven publication called “debug”.
+            debug(MavenPublication) {
+                // Applies the component for the debug build variant.
+                from components.debug
+
+                groupId = GROUP_ID
+                artifactId = "${project.name}-debug"
+                version = VERSION
+            }
+        }
+    }
+}

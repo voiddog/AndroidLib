@@ -2,10 +2,10 @@ package org.voiddog.android.lib.design.loadingarch.refresh;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.support.animation.DynamicAnimation;
-import android.support.animation.SpringForce;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.dynamicanimation.animation.DynamicAnimation;
+import androidx.dynamicanimation.animation.SpringForce;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Animation;

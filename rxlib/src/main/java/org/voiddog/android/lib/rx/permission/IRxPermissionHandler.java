@@ -1,6 +1,6 @@
 package org.voiddog.android.lib.rx.permission;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 /**
  * ┏┛ ┻━━━━━┛ ┻┓

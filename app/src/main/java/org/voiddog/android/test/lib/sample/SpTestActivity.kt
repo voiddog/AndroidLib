@@ -1,7 +1,7 @@
 package org.voiddog.android.test.lib.sample
 
 import android.annotation.SuppressLint
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_sp_test.*
 import org.voiddog.android.lib.base.config.ISPService

@@ -7,14 +7,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar"
         style="@style/AppToolbarStyle"
         app:title="主页"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"/>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rec_list"
         android:layout_weight="1"
         android:layout_width="match_parent"

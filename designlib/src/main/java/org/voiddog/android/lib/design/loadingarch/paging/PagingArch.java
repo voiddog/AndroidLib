@@ -1,9 +1,9 @@
 package org.voiddog.android.lib.design.loadingarch.paging;
 
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.Observer;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import android.os.Looper;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 
 import org.voiddog.android.lib.design.loadingarch.loadmore.ILoadMoreListener;
